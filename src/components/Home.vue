@@ -3,7 +3,7 @@
     <h1 class="text-9xl font-black mb-15 pt-5">Utility Tools</h1>
     <ul class="text-3xl list-disc list-inside">
       <li>
-        <a href="/uuid-generator">UUID Generator (<var></var>4, v7)</a>
+        <a href="/uuid-generator">UUID Generator (v4, v7)</a>
       </li>
     </ul>
   </div>
