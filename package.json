@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:rust": "cd rust-src && wasm-pack build --target web",
+    "test:rust": "cd rust-src && cargo test",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -17,7 +19,10 @@
     "astro": "^5.4.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "rust-utility-tools": "file:./rust-src/pkg",
     "tailwindcss": "^4.0.13",
+    "vite-plugin-top-level-await": "^1.5.0",
+    "vite-plugin-wasm": "^3.4.1",
     "vue": "^3.5.13"
   },
   "packageManager": "yarn@1.22.22"
