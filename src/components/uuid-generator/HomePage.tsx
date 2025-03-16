@@ -5,8 +5,8 @@ import Toast from "./Toast";
 const HomePage = () => {
   const [showCopyToast, setShowCopyToast] = useState(false);
   return (
-    <main className="px-15 pt-5">
-      <h1 className="text-5xl mb-10 font-bold">
+    <main className="px-5 sm:px-15 pt-5 pb-10">
+      <h1 className="text-3xl sm:text-5xl mb-10 font-bold">
         Online UUID Generator (v4, v7)
       </h1>
       <GenerateGlobalUUID onClickCopy={() => setShowCopyToast(true)} />
@@ -24,7 +24,7 @@ const HomePage = () => {
           UUIDs generated in one system can be readily understood and utilized
           in another without ambiguity.
         </p>
-        <div className="grid grid-cols-2 gap-5 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 ">
           <div>
             <h3 className="font-bold">What is UUID v4?</h3>
             <p>
@@ -51,8 +51,8 @@ const HomePage = () => {
             </p>
           </div>
         </div>
-        <div>
-          Ref:{" "}
+        <div className="mt-5">
+          Reference:{" "}
           <a
             className="underline"
             href="https://datatracker.ietf.org/doc/rfc9562/"

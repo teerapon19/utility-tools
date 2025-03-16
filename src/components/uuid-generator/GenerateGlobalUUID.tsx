@@ -11,6 +11,24 @@ interface Props {
   onUuidVersionChange?: (version: string) => void;
 }
 
+const copyToClipboard = async (text: string) => {
+  let isSuccess = false;
+  try {
+    await navigator.clipboard.writeText(text);
+    isSuccess = true;
+  } catch {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+    isSuccess = true;
+  }
+  return isSuccess;
+};
+
 const GenerateGlobalUUID = ({ onClickCopy, onUuidVersionChange }: Props) => {
   const [globalUUID, setGlobalUUID] = useState("");
   const [uuidVersion, setUuidVersion] = useState("V4");
@@ -30,7 +48,7 @@ const GenerateGlobalUUID = ({ onClickCopy, onUuidVersionChange }: Props) => {
 
   return (
     <div className="w-full border border-white p-5 mb-10">
-      <div className="text-5xl text-center py-10">
+      <div className="text-2xl sm:text-5xl text-center py-10">
         {globalUUID != "" ? globalUUID : "Generating..."}
       </div>
       {uuidVersion == UUID_VERSION.v7 && generateTime && (
@@ -69,8 +87,8 @@ const GenerateGlobalUUID = ({ onClickCopy, onUuidVersionChange }: Props) => {
           <button
             className="cursor-pointer border border-white rounded-full px-4 active:bg-green-200 transition-all duration-300 ease-in-out"
             onClick={async () => {
-              await navigator.clipboard.writeText(globalUUID);
-              if (onClickCopy) onClickCopy(globalUUID);
+              const success = await copyToClipboard(globalUUID);
+              if (success && onClickCopy) onClickCopy(globalUUID);
             }}
           >
             Copy
